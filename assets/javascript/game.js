@@ -24,9 +24,11 @@ $(document).ready(function() {
 		//incorrectGuesses[incorrectGuesses.length]=userGuess;
 	//}
 
-//Conditional if the user guesses the right letter
+//Conditional if the user guesses the right letter.
 
 	if ((userGuess === computerGuess)) {
+//I got confused on how to make this empty div div show up and then clear 
+//out when the user started to play again
 		document.querySelector("#empty-div").innerHTML =
 		("You must be psychic! Press any key to impress Ms. Cleo again!");
 		winsCounter ++;
@@ -52,8 +54,10 @@ $(document).ready(function() {
 		document.querySelector("#CurrentGuesses").innerHTML =
 		"Your Guesses so far: " + incorrectGuesses.join(", ");
 	}
-//I want this to stop the game...but to maintain the counters
+//Game over section.
 	if ((guessesLeft < 1)) {
+//I got confused on how to make this empty div div show up and then clear 
+//out when the user started to play again
 	document.querySelector("#empty-div").innerHTML = 
 	("Game over...press any key to try again!");
 	lossCounter++;
