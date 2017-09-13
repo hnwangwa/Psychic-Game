@@ -10,7 +10,7 @@ $(document).ready(function() {
 //This array is for all the possible letters for the computer to choose from
 	var letterChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
 	"l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-//This resets the game, but only after a key is pressed. Unsure how to fix.
+//This resets the game, but works only after a key is pressed again. Unsure how to fix.
 	var reset = function () {
 		guessesLeft = 9;
 		incorrectGuesses = [];
@@ -25,6 +25,10 @@ $(document).ready(function() {
 		
 //This is the jQuery version of event.key
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+//This was meant to prevent keys from double counting, but I had troubleshooting problems
+//if (incorrectGuesses.indexOf(userGuess) < 0 && letterChoices.indexOf(userGuess) >= 0) {
+		//incorrectGuesses[incorrectGuesses.length]=userGuess;
+	//}
 
 //Conditional if the user guesses the right letter
 
@@ -60,14 +64,7 @@ $(document).ready(function() {
 }
 	
 }
-  // A reset button I wanted, but ran into the same issue as the reset function above
-  //$("#reset").on("click", function() {
-   		//guessesLeft = 9;
-		//incorrectGuesses = [];
-		//computerGuess = letterChoices[Math.floor(Math.random() * letterChoices.
-  		//length)];
-  		//console.log(computerGuess);
-       //});
+ 
 	
 	
 });
