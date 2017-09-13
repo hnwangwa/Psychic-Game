@@ -3,20 +3,14 @@ $(document).ready(function() {
 // Variables for the various counters
 	var winsCounter = 0;
 	var lossCounter = 0;
-	var guessesLeft = 9;
+	var guessesLeft = 10;
 	
 //This array is currently empty but will populate as the user plays
 	var incorrectGuesses = [];
 //This array is for all the possible letters for the computer to choose from
 	var letterChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
 	"l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-//This resets the game, but works only after a key is pressed again. Unsure how to fix.
-	var reset = function () {
-		guessesLeft = 9;
-		incorrectGuesses = [];
-		computerGuess = letterChoices[Math.floor(Math.random() * letterChoices.
-  		length)];
-}
+
  // Randomly chooses a choice from the letters array (computer's guess)
   	var computerGuess = letterChoices[Math.floor(Math.random() * letterChoices.
   		length)];
@@ -33,11 +27,16 @@ $(document).ready(function() {
 //Conditional if the user guesses the right letter
 
 	if ((userGuess === computerGuess)) {
-		alert("Whoa, you must be psychic! I was thinking " + computerGuess);
+		document.querySelector("#empty-div").innerHTML =
+		("You must be psychic! Press any key to impress Ms. Cleo again!");
 		winsCounter ++;
+		guessesLeft = 10;
+		incorrectGuesses = [];
+		computerGuess = letterChoices[Math.floor(Math.random() * letterChoices.
+		length)];
 		document.querySelector("#Wins").innerHTML =
 		"Wins: " + winsCounter;
-		reset();
+		
 				
 	}
 	else {
@@ -55,11 +54,16 @@ $(document).ready(function() {
 	}
 //I want this to stop the game...but to maintain the counters
 	if ((guessesLeft < 1)) {
-	alert("Game over...it looks like your psychic powers have run out");
+	document.querySelector("#empty-div").innerHTML = 
+	("Game over...press any key to try again!");
 	lossCounter++;
+	guessesLeft = 10;
+	incorrectGuesses = [];
+	computerGuess = letterChoices[Math.floor(Math.random() * letterChoices.
+	length)];
 	document.querySelector("#Losses").innerHTML =
 	"Losses: " + lossCounter;
-	reset();
+	
 	
 }
 	
